@@ -95,13 +95,13 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        TaskWise addressBook = new TaskWiseBuilder().withTask(ALICE).withTask(BENSON).build();
+        TaskWise taskWise = new TaskWiseBuilder().withTask(ALICE).withTask(BENSON).build();
         TaskWise differentTaskWise = new TaskWise();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs);
+        modelManager = new ModelManager(taskWise, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(taskWise, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -113,13 +113,13 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different addressBook -> returns false
+        // different taskWise -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentTaskWise, userPrefs)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getDescription().fullDescription.split("\\s+");
         modelManager.updateFilteredTaskList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(taskWise, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
@@ -127,6 +127,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setTaskWiseFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(taskWise, differentUserPrefs)));
     }
 }

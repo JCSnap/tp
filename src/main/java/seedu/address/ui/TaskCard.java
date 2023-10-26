@@ -36,6 +36,8 @@ public class TaskCard extends UiPart<Region> {
     private Label status;
     @FXML
     private FlowPane tags;
+    @FXML
+    private Label note;
 
     /**
      * Creates a {@code TaskCode} with the given {@code Task} and index to display.
@@ -46,6 +48,7 @@ public class TaskCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         description.setText(task.getDescription().fullDescription);
         status.setText(task.getStatus().toString());
+        note.setText(task.getNote().fullNote);
         task.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

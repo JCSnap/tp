@@ -47,15 +47,15 @@ class JsonSerializableTaskWise {
      * @throws IllegalJsonValueException if there were any data constraints violated.
      */
     public TaskWise toModelType() throws IllegalJsonValueException {
-        TaskWise addressBook = new TaskWise();
+        TaskWise taskWise = new TaskWise();
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
-            if (addressBook.hasTask(task)) {
+            if (taskWise.hasTask(task)) {
                 throw new IllegalJsonDuplicatedTaskException(MESSAGE_DUPLICATE_TASK);
             }
-            addressBook.addTask(task);
+            taskWise.addTask(task);
         }
-        return addressBook;
+        return taskWise;
     }
 
 }

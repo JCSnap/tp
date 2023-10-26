@@ -18,7 +18,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.MarkCommand;
-import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.NoteCommand;
 import seedu.address.logic.commands.UnmarkCommand;
 import seedu.address.logic.parser.exceptions.InvalidCommandException;
 import seedu.address.logic.parser.exceptions.InvalidFormatException;
@@ -59,7 +59,6 @@ public class TaskWiseParser {
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
@@ -90,8 +89,8 @@ public class TaskWiseParser {
         case UnmarkCommand.COMMAND_WORD:
             return new UnmarkCommandParser().parse(arguments);
 
-        case SortCommand.COMMAND_WORD:
-            return new SortCommandParser().parse(arguments);
+        case NoteCommand.COMMAND_WORD:
+            return new NoteCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

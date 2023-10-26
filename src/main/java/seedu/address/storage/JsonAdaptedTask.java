@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Description;
+import seedu.address.model.task.Note;
 import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
 import seedu.address.storage.exceptions.json.IllegalJsonDescriptionValueException;
@@ -22,32 +23,35 @@ class JsonAdaptedTask {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Task's %s field is missing!";
 
-    private final String name;
+    private final String description;
     private final boolean status;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String note;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("tags") List<JsonAdaptedTag> tags,
-                           @JsonProperty("status") boolean status) {
-        this.name = name;
+                           @JsonProperty("status") boolean status, @JsonProperty("note") String note) {
+        this.description = name;
         if (tags != null) {
             this.tags.addAll(tags);
         }
         this.status = status;
+        this.note = note;
     }
 
     /**
      * Converts a given {@code Task} into this class for Jackson use.
      */
     public JsonAdaptedTask(Task source) {
-        name = source.getDescription().fullDescription;
+        description = source.getDescription().fullDescription;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         status = source.getStatus().isCompleted();
+        note = source.getNote().fullNote;
     }
 
     /**
@@ -62,20 +66,24 @@ class JsonAdaptedTask {
         }
 
 
-        if (name == null) {
+        if (description == null) {
             throw new IllegalJsonNameValueException(
                     String.format(MISSING_FIELD_MESSAGE_FORMAT, Description.class.getSimpleName()));
         }
 
-        if (!Description.isValidDescription(name)) {
+        if (!Description.isValidDescription(description)) {
             throw new IllegalJsonDescriptionValueException(Description.MESSAGE_CONSTRAINTS);
         }
 
-        final Description modelName = new Description(name);
+        if (!Note.isValidNote(note)) {
+            throw new IllegalJsonValueException(Note.MESSAGE_CONSTRAINTS);
+        }
+
+        final Description modelName = new Description(description);
 
         final Status modelStatus = new Status(status);
 
-        return new Task(modelName, modelStatus);
+        return new Task(modelName, modelStatus, new Note(note));
     }
 
 }

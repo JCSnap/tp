@@ -5,16 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_TASKS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalTasks.CARL;
-import static seedu.address.testutil.TypicalTasks.ELLE;
-import static seedu.address.testutil.TypicalTasks.FIONA;
+import static seedu.address.testutil.TypicalTasks.ALICE;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskWise;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
-
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -57,7 +54,7 @@ public class FindCommandTest {
     @Test
     public void execute_zeroKeywords_noTaskFound() {
         String expectedMessage = String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 0);
-        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+        NameContainsKeywordsPredicate predicate = preparePredicate("Random");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredTaskList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -66,12 +63,12 @@ public class FindCommandTest {
 
     @Test
     public void execute_multipleKeywords_multipleTasksFound() {
-        String expectedMessage = String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 3);
-        NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
+        String expectedMessage = String.format(MESSAGE_TASKS_LISTED_OVERVIEW, 1);
+        NameContainsKeywordsPredicate predicate = preparePredicate("Fix");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredTaskList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredTaskList());
+        assertEquals(Arrays.asList(ALICE), model.getFilteredTaskList());
     }
 
     @Test

@@ -1,8 +1,14 @@
 {
-  "tasks": [ {
-    "name": "Alice Pauline",
-    "tags": [ "friends" ]
-  }, {
-    "name": "Alice Pauline"
-  } ]
+  "tasks": [
+    {
+      "description": "Finish up demo",
+      "status": false,
+      "note": ""
+    },
+    {
+      "description": "Finish up demo",
+      "status": false,
+      "note": ""
+    }
+  ]
 }

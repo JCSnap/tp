@@ -10,6 +10,7 @@ import java.util.Set;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
+
 /**
  * Represents a Task in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -20,9 +21,11 @@ public class Task {
     private final Description description;
     private final Set<Tag> tags = new HashSet<>();
     private final Status status;
+    private final Note note;
 
     /**
      * Only description is required.
+     *
      * @param description
      */
     // TODO: Fix/Remove the default fields that are unnecessary
@@ -31,6 +34,7 @@ public class Task {
         this.description = description;
         this.status = new Status();
         this.tags.addAll(Collections.emptySet());
+        this.note = new Note("");
     }
 
     /**
@@ -44,6 +48,22 @@ public class Task {
         this.description = description;
         this.status = status;
         this.tags.addAll(Collections.emptySet());
+        this.note = new Note("");
+    }
+
+    /**
+     * Constructor for task, to be used in retrieval from storage.
+     *
+     * @param description
+     * @param status
+     * @param note
+     */
+    public Task(Description description, Status status, Note note) {
+        requireAllNonNull(description);
+        this.description = description;
+        this.status = status;
+        this.tags.addAll(Collections.emptySet());
+        this.note = note;
     }
 
     public Description getDescription() {
@@ -60,6 +80,10 @@ public class Task {
 
     public Status getStatus() {
         return status;
+    }
+
+    public Note getNote() {
+        return note;
     }
 
     /**
@@ -110,5 +134,4 @@ public class Task {
                 .add("status", status)
                 .toString();
     }
-
 }

@@ -1,5 +1,9 @@
 {
-  "tasks": [ {
-    "name": ""
-  } ]
+  "tasks": [
+    {
+      "description": "",
+      "status": false,
+      "note": ""
+    }
+  ]
 }

@@ -1,25 +1,40 @@
 {
   "_comment": "TaskWise save file which contains the same Task values as in TypicalTasks#getTypicalTaskWise()",
-  "tasks" : [ {
-    "name" : "Alice Pauline",
-    "tags" : [ "friends" ]
-  }, {
-    "name" : "Benson Meier",
-    "tags" : [ "owesMoney", "friends" ]
-  }, {
-    "name" : "Carl Kurz",
-    "tags" : [ ]
-  }, {
-    "name" : "Daniel Meier",
-    "tags" : [ "friends" ]
-  }, {
-    "name" : "Elle Meyer",
-    "tags" : [ ]
-  }, {
-    "name" : "Fiona Kunz",
-    "tags" : [ ]
-  }, {
-    "name" : "George Best",
-    "tags" : [ ]
-  } ]
+  "tasks": [
+    {
+      "description": "Fix bug",
+      "status": false,
+      "note": ""
+    },
+    {
+      "description": "Do OP2 report",
+      "status": false,
+      "note": ""
+    },
+    {
+      "description": "Do OP2 presentation",
+      "status": false,
+      "note": ""
+    },
+    {
+      "description": "Do user guide",
+      "status": false,
+      "note": ""
+    },
+    {
+      "description": "Do developer guide",
+      "status": false,
+      "note": ""
+    },
+    {
+      "description": "Meeting to discuss OP2",
+      "status": false,
+      "note": ""
+    },
+    {
+      "description": "Rehearse OP2 presentation",
+      "status": false,
+      "note": ""
+    }
+  ]
 }

@@ -6,29 +6,29 @@ import seedu.address.model.task.Task;
 /**
  * A utility class to help with building Addressbook objects.
  * Example usage: <br>
- *     {@code TaskWise ab = new TaskWiseBuilder().withTask("John", "Doe").build();}
+ * {@code TaskWise ab = new TaskWiseBuilder().withTask("John", "Doe").build();}
  */
 public class TaskWiseBuilder {
 
-    private TaskWise addressBook;
+    private TaskWise taskWise;
 
     public TaskWiseBuilder() {
-        addressBook = new TaskWise();
+        taskWise = new TaskWise();
     }
 
-    public TaskWiseBuilder(TaskWise addressBook) {
-        this.addressBook = addressBook;
+    public TaskWiseBuilder(TaskWise taskWise) {
+        this.taskWise = taskWise;
     }
 
     /**
      * Adds a new {@code Task} to the {@code TaskWise} that we are building.
      */
     public TaskWiseBuilder withTask(Task task) {
-        addressBook.addTask(task);
+        taskWise.addTask(task);
         return this;
     }
 
     public TaskWise build() {
-        return addressBook;
+        return taskWise;
     }
 }
