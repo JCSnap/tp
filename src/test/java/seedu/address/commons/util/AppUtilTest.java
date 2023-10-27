@@ -11,7 +11,7 @@ public class AppUtilTest {
     @Disabled("RefactorTest: disabled to allow build to pass")
     @Test
     public void getImage_exitingImage() {
-        assertNotNull(AppUtil.getImage("/images/address_book_32.png"));
+        assertNotNull(AppUtil.getImage("/images/task_wise_logo.png"));
     }
 
     @Test
