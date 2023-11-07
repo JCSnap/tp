@@ -14,7 +14,7 @@ import seedu.address.model.task.Note;
 /**
  * Parses input arguments and creates a new NoteCommand object
  */
-public class NoteCommandParser {
+public class NoteCommandParser implements Parser<NoteCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteCommand
      * and returns a DeleteCommand object for execution.

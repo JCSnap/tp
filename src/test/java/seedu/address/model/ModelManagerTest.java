@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,12 +11,16 @@ import static seedu.address.testutil.TypicalTasks.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.task.Description;
 import seedu.address.model.task.NameContainsKeywordsPredicate;
+import seedu.address.model.task.Task;
 import seedu.address.testutil.TaskWiseBuilder;
 
 public class ModelManagerTest {
@@ -91,6 +96,24 @@ public class ModelManagerTest {
     @Test
     public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
+    public void setAllTask_changeList_doesNotThrow() {
+        Task task = new Task(new Description("this should work"));
+        assertDoesNotThrow(() -> modelManager.setAllTasks(List.of(task)));
+        assertTrue(modelManager.hasTask(task));
+        assertEquals(1, modelManager.getFilteredTaskList().size());
+    }
+
+    @Test
+    public void setAllTask_changeListContainsNull_throwsAssertionError() {
+        Task task = new Task(new Description("this should work"));
+        List<Task> newList = new ArrayList<>();
+        newList.add(null);
+        newList.add(task);
+
+        assertThrows(AssertionError.class, () -> modelManager.setAllTasks(newList));
     }
 
     @Test

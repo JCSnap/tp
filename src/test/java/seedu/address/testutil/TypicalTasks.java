@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.TaskWise;
+import seedu.address.model.task.Priority;
 import seedu.address.model.task.Task;
 
 /**
@@ -17,19 +18,21 @@ public class TypicalTasks {
     // TODO: Change test cases
     // TODO: Change test cases
     public static final Task ALICE = new TaskBuilder()
-            .withDescription("Fix bug").withStatus(false).withNote("").build();
+            .withDescription("Fix bug").withStatus(false).withNote("").withPriority(Priority.NONE).build();
     public static final Task BENSON = new TaskBuilder()
-            .withDescription("Do OP2 report").withStatus(false).withNote("").build();
+            .withDescription("Do OP2 report").withStatus(false).withNote("").withPriority(Priority.NONE).build();
     public static final Task CARL = new TaskBuilder()
-            .withDescription("Do OP2 presentation").withStatus(false).withNote("").build();
+            .withDescription("Do OP2 presentation").withStatus(false).withNote("").withPriority(Priority.NONE).build();
     public static final Task DANIEL = new TaskBuilder()
-            .withDescription("Do user guide").withStatus(false).withNote("").build();
+            .withDescription("Do user guide").withStatus(false).withNote("").withPriority(Priority.NONE).build();
     public static final Task ELLE = new TaskBuilder()
-            .withDescription("Do developer guide").withStatus(false).withNote("").build();
+            .withDescription("Do developer guide").withStatus(false).withNote("").withPriority(Priority.NONE).build();
     public static final Task FIONA = new TaskBuilder()
-            .withDescription("Meeting to discuss OP2").withStatus(false).withNote("").build();
+            .withDescription("Meeting to discuss OP2").withStatus(false).withNote("")
+            .withPriority(Priority.NONE).build();
     public static final Task GEORGE = new TaskBuilder()
-            .withDescription("Rehearse OP2 presentation").withStatus(false).withNote("").build();
+            .withDescription("Rehearse OP2 presentation").withStatus(false).withNote("")
+            .withPriority(Priority.NONE).build();
 
 
     // Manually added
@@ -39,9 +42,9 @@ public class TypicalTasks {
     // Manually added - Task's details found in {@code CommandTestUtil}
     // TODO: Add other fields required for test case ie. Deadline, Priority.
     public static final Task AMY = new TaskBuilder()
-            .withDescription(VALID_NAME_AMY).withStatus(false).withNote("").build();
+            .withDescription(VALID_NAME_AMY).withStatus(false).withNote("").withPriority(Priority.NONE).build();
     public static final Task BOB = new TaskBuilder()
-            .withDescription(VALID_NAME_BOB).withStatus(false).withNote("").build();
+            .withDescription(VALID_NAME_BOB).withStatus(false).withNote("").withPriority(Priority.NONE).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "OP2"; // A keyword that matches MEIER
 

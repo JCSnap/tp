@@ -223,9 +223,52 @@ Looking to get started immediately? Here is a summary of the commands that TaskW
 | `priority [task_index] [priority_level]` (WIP)                   | Applies specified priotity level label to a task at a specified index. |
 | `assign [task_index] [assignee_name]` (WIP)                      | Specifies the individual assigned to a task at a specified index.      |
 
+## Prefixes
+
+Now, before we start with the features proper, let's introduce an important concept in the usage of TaskWise: Prefixes!
+Prefixes allow you to indicate certain values as being important to TaskWise while you are entering any command into
+the input box.
+
+Remember the command that was previously used in the tutorial?
+
+`add t/ Complete CS2103T User Guide d/ 01-01-2023`
+
+The task created by this command contains information about the **task's name** and the **deadline** of the associated task.
+This is denoted by the `t/` and `d/` prefixes respectively.
+
+Now, with the power of prefixes, in the same command, you can add even more useful information using the same command!
+
+One such prefix would be the `p/` command, allowing you to change the **priority level of the task** that is being created.
+After all, you wouldn't want to miss the most important submission worth 50% of your grade because you didn't see it among the mountain of other tasks you have, right?
+
+`add t/ Complete CS2103T User Guide d/ 01-01-2023 p/ high`
+
+By adding the `p/` prefix into the same command, you can now create the task within TaskWise, with a priority level set
+to `high` instead of a priority level of `none`.
+
+### Table of Prefixes
+
+Here is a table of all available prefixes you can use within TaskWise:
+
+| Prefixes | Description                                                               |
+|----------|---------------------------------------------------------------------------|
+| `t/`     | The prefix used to indicate the name of the task.                         |
+| `d/`     | The prefix used to indicate the deadline of the task.                     |
+| `p/`     | The prefix used to indicate the priority of the task.                     |
+| `m/`     | The prefix used to indicate the member you wish to assign to the task.    |
+| `n/`     | The prefix used to indicate the note you wish to associate with the task. |
+
+If these prefixes do not make sense to you at this moment, fret not! Continue reading, and each prefix will be explained
+in greater detail!
+
 ## Add Tasks
 
 [[Jump to Features]](#features)
+
+If you need a quick recap about adding tasks, head over to [here](#adding-your-first-task).
+
+Now that you have learnt about adding tasks in TaskWise, let's take it to the next level! While adding tasks into
+TaskWise along with a deadline might be useful to keep track of tasks and their deadlines
 
 ### What It Does:
 
@@ -332,7 +375,7 @@ Looking to get started immediately? Here is a summary of the commands that TaskW
 * `list`
 * `display`
 
-### AcceptabVe Values for Each Parameter
+### Acceptable Values for Each Parameter
 
 * One of “list” or “display”, case-sensitive
 

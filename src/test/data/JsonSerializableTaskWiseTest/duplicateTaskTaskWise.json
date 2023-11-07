@@ -3,12 +3,20 @@
     {
       "description": "Finish up demo",
       "status": false,
-      "note": ""
+      "note": "",
+      "deadline" : {
+        "details" : "+999999999-12-31T23:59:59.999999999",
+        "isNull" : true
+      }
     },
     {
       "description": "Finish up demo",
       "status": false,
-      "note": ""
+      "note": "",
+      "deadline" : {
+        "details" : "+999999999-12-31T23:59:59.999999999",
+        "isNull" : true
+      }
     }
   ]
 }

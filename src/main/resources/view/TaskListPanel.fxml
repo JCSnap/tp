@@ -2,7 +2,55 @@
 
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-  <ListView fx:id="taskListView" VBox.vgrow="ALWAYS" />
-</VBox>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<GridPane fx:id="gridPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" maxHeight="Infinity">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" percentWidth="65.0"/>
+    <ColumnConstraints hgrow="SOMETIMES" percentWidth="35.0"/>
+  </columnConstraints>
+
+  <rowConstraints>
+    <RowConstraints vgrow="ALWAYS"/>
+  </rowConstraints>
+
+  <children>
+    <ListView fx:id="taskListView" GridPane.columnIndex="0"/>
+    <ScrollPane fx:id="taskInfoView" GridPane.columnIndex="1" styleClass="note_pane">
+      <VBox fx:id="scrollableBox" spacing="10">
+        <padding>
+          <Insets top="5" right="5" bottom="5" left="5"/>
+        </padding>
+        <children>
+          <Label fx:id="selectLabel" text="Select a Task..."/>
+          <Label fx:id="descriptionLabel" visible="false" wrapText="true" styleClass="description_field"/>
+          <HBox fx:id="statusView" visible="false">
+            <children>
+              <Label text="Status: " styleClass="black_text"/>
+              <Label fx:id="statusText" styleClass="status_field"/>
+            </children>
+          </HBox>
+          <Label fx:id="deadlineView" styleClass="black_text" visible="false"/>
+          <HBox fx:id="priorityView" visible="false">
+            <children>
+              <Label text="Priority: " styleClass="black_text"/>
+              <Label fx:id="priorityText"/>
+            </children>
+          </HBox>
+          <HBox fx:id="memberView" visible="false">
+            <Label text="Members: " styleClass="black_text"/>
+            <VBox fx:id="memberList" spacing="5" VBox.vgrow="ALWAYS"/>
+          </HBox>
+          <Label fx:id="noteView" styleClass="black_text" wrapText="true" visible="false"/>
+        </children>
+      </VBox>
+    </ScrollPane>
+  </children>
+</GridPane>

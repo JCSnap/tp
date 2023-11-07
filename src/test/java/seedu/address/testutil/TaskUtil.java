@@ -1,12 +1,13 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEMBER;
 
 import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
+import seedu.address.model.tag.Member;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
 
@@ -29,7 +30,7 @@ public class TaskUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_DESCRIPTION + task.getDescription().fullDescription + " ");
         task.getTags().stream().forEach(
-            s -> sb.append(PREFIX_TAG + s.tagName + " ")
+            s -> sb.append(PREFIX_MEMBER + s.tagName + " ")
         );
         return sb.toString();
     }
@@ -44,9 +45,18 @@ public class TaskUtil {
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
+                sb.append(PREFIX_MEMBER);
             } else {
-                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
+                tags.forEach(s -> sb.append(PREFIX_MEMBER).append(s.tagName).append(" "));
+            }
+        }
+
+        if (descriptor.getMembers().isPresent()) {
+            Set<Member> members = descriptor.getMembers().get();
+            if (members.isEmpty()) {
+                sb.append(PREFIX_MEMBER);
+            } else {
+                members.forEach(s -> sb.append(PREFIX_MEMBER).append(s.memberName).append(" "));
             }
         }
         return sb.toString();

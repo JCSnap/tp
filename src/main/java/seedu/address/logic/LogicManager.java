@@ -20,6 +20,7 @@ import seedu.address.storage.Storage;
 import seedu.address.storage.exceptions.StorageException;
 import seedu.address.storage.exceptions.storage.InsufficientStoragePrivilegeException;
 import seedu.address.storage.exceptions.storage.StorageReadWriteException;
+import seedu.address.ui.MainWindow;
 
 /**
  * The main LogicManager of the app.
@@ -88,5 +89,10 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public void setMainWindow(MainWindow mainWindow) {
+        model.setMainWindow(mainWindow);
     }
 }

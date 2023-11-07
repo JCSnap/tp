@@ -1,7 +1,13 @@
 {
   "tasks": [
     {
-      "description": "Task with invalid description field: Do Mu@ster"
+      "description": "",
+      "status": false,
+      "note": "",
+      "deadline" : {
+        "details" : "+999999999-12-31T23:59:59.999999999",
+        "isNull" : true
+      }
     }
   ]
 }

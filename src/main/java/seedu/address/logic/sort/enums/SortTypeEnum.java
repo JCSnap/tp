@@ -5,10 +5,11 @@ package seedu.address.logic.sort.enums;
  */
 public enum SortTypeEnum {
     TASK_NAME("task name"),
+    STATUS("status"),
     PRIORITY("priority"),
     DEADLINE("deadline");
 
-    public static final String MESSAGE_CONSTRAINTS = "Oh no! I cannot understand the sort order: ";
+    public static final String MESSAGE_CONSTRAINTS = "Oh no! I cannot understand the sort type: ";
 
     private final String representation;
 
@@ -19,12 +20,14 @@ public enum SortTypeEnum {
     /**
      * Returns the relevant {@code SortTypeEnum} based on the String input.
      *
-     * @param sortOrder String input to parse
+     * @param sortType String input to parse
      * @return {@code SortTypeEnum} object
      * @throws IllegalArgumentException if the input String is not a valid input String value
      */
-    public static SortTypeEnum of(String sortOrder) {
-        switch (sortOrder) {
+    public static SortTypeEnum of(String sortType) {
+        String strippedSortType = sortType.strip();
+
+        switch (strippedSortType) {
         case "t":
         case "tn":
         case "task":
@@ -42,6 +45,11 @@ public enum SortTypeEnum {
         case "deadln":
         case "deadline":
             return SortTypeEnum.DEADLINE;
+        case "s":
+        case "st":
+        case "stat":
+        case "status":
+            return SortTypeEnum.STATUS;
         default:
             throw new IllegalArgumentException("Invalid Enum value");
         }

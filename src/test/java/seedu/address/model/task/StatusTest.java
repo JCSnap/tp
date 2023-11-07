@@ -1,11 +1,14 @@
 package seedu.address.model.task;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 public class StatusTest {
+    private static final Status completed = new Status(true);
+    private static final Status incompleted = new Status(false);
 
     @Test
     public void updateStatus() {
@@ -40,6 +43,22 @@ public class StatusTest {
 
         //Different completion status -> returns false
         assertFalse(status.equals(status.updateStatus()));
+    }
+
+    @Test
+    public void compareTo_equalStatus_returnsZero() {
+        assertEquals(completed.compareTo(completed), 0);
+        assertEquals(incompleted.compareTo(incompleted), 0);
+    }
+
+    @Test
+    public void compareTo_equalStatus_returnsOne() {
+        assertEquals(completed.compareTo(incompleted), 1);
+    }
+
+    @Test
+    public void compareTo_equalStatus_returnsNegativeOne() {
+        assertEquals(incompleted.compareTo(completed), -1);
     }
 
     @Test

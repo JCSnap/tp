@@ -6,37 +6,64 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<GridPane id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" style="-fx-border-color: transparent">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" prefWidth="170"/>
+        <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" prefWidth="170"/>
+    </columnConstraints>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <GridPane HBox.hgrow="ALWAYS">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
-        </columnConstraints>
-        <HBox>
-            <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-                <padding>
-                    <Insets top="5" right="5" bottom="5" left="15"/>
-                </padding>
-                <HBox spacing="5" alignment="CENTER_LEFT">
-                    <Label fx:id="id" styleClass="cell_big_label">
-                        <minWidth>
-                            <!-- Ensures that the label text is never truncated -->
-                            <Region fx:constant="USE_PREF_SIZE"/>
-                        </minWidth>
-                    </Label>
-                    <Label fx:id="description" text="\$first" styleClass="cell_big_label"/>
-                </HBox>
-                <FlowPane fx:id="tags"/>
-                <Label fx:id="status" styleClass="cell_small_label" text="\$status"/>
-            </VBox>
-            <VBox alignment="CENTER_RIGHT" minHeight="105">
-                <padding>
-                    <Insets top="5" right="5" bottom="5" left="15"/>
-                </padding>
-                <Label fx:id="note" styleClass="cell_medium_label" text="\$note"/>
-            </VBox>
-        </HBox>
-    </GridPane>
-</HBox>
+    <rowConstraints>
+        <RowConstraints vgrow="NEVER" prefHeight="115" valignment="CENTER"/>
+    </rowConstraints>
+
+    <children>
+        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0" spacing="2">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label fx:id="idAndDescription" HBox.hgrow="NEVER" minWidth="170"/>
+            </HBox>
+            <FlowPane fx:id="tags" alignment="CENTER_LEFT"/>
+            <Label fx:id="deadline" styleClass="deadline_cell_small_label" text="\$deadline" />
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="priority_and_status">
+              <Label fx:id="defaultPriority" managed="false" styleClass="default_priority_cell_small_label" text="\$priority" visible="false" />
+              <Label fx:id="lowPriority" managed="false" styleClass="low_priority_cell_small_label" text="\$priority" visible="false" />
+              <Label fx:id="mediumPriority" managed="false" styleClass="medium_priority_cell_small_label" text="\$priority" visible="false" />
+              <Label fx:id="highPriority" managed="false" styleClass="high_priority_cell_small_label" text="\$priority" visible="false" />
+              <Label fx:id="status" styleClass="status_cell_small_label" text="\$status"/>
+            </HBox>
+            <FlowPane fx:id="members" maxHeight="20" styleClass="members_pane" alignment="CENTER_LEFT"/>
+        </VBox>
+
+        <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="5" right="15" bottom="5" left="15" />
+            </padding>
+            <children>
+                <GridPane>
+                    <rowConstraints>
+                        <RowConstraints percentHeight="20.0"/>
+                        <RowConstraints percentHeight="80.0"/>
+                    </rowConstraints>
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="100"/>
+                    </columnConstraints>
+
+                    <children>
+                        <Label text="Notes:" style="-fx-font-family: Glacial Indifference Bold" GridPane.rowIndex="0" minWidth="0"/>
+                        <HBox style="-fx-border-color: #563c0b; -fx-border-radius: 5; -fx-border-width: 1; -fx-border-insets: 5;" GridPane.rowIndex="1" minWidth="0">
+                            <padding>
+                                <Insets top="5" right="15" bottom="5" left="5" />
+                            </padding>
+                            <Label fx:id="note" styleClass="cell_medium_label" text="\$note" wrapText="true" HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </children>
+</GridPane>

@@ -12,12 +12,17 @@ public class CliSyntaxTest {
     @Test
     public void descriptionPrefix_exists() {
         assertNotNull(CliSyntax.PREFIX_DESCRIPTION);
-        assertEquals(CliSyntax.PREFIX_DESCRIPTION.getPrefix(), "d/");
+        assertEquals(CliSyntax.PREFIX_DESCRIPTION.getPrefix(), "t/");
     }
 
     @Test
     public void tagDescription_exists() {
-        assertNotNull(CliSyntax.PREFIX_TAG);
-        assertEquals(CliSyntax.PREFIX_TAG.getPrefix(), "t/");
+        assertNotNull(CliSyntax.PREFIX_MEMBER);
+        assertEquals(CliSyntax.PREFIX_MEMBER.getPrefix(), "m/");
+    }
+    @Test
+    public void priorityPrefix_exists() {
+        assertNotNull(CliSyntax.PREFIX_PRIORITY);
+        assertEquals(CliSyntax.PREFIX_PRIORITY.getPrefix(), "p/");
     }
 }

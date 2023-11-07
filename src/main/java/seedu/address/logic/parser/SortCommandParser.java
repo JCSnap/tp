@@ -17,7 +17,8 @@ import seedu.address.logic.sort.enums.SortTypeEnum;
  */
 public class SortCommandParser implements Parser<SortCommand> {
 
-    //@@author-asdfghjkxd reused
+    //@@author asdfghjkxd-reused
+    // Reused with slight modification from AddCommandParser
     @Override
     public SortCommand parse(String userInput) throws ParseException {
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(userInput, PREFIX_SORT_ORDER, PREFIX_SORT_TYPE);
@@ -40,10 +41,7 @@ public class SortCommandParser implements Parser<SortCommand> {
 
         return new SortCommand(sortOrder, sortType);
     }
-    //@@author
 
-    //@@author-asdfghjkxd reused
-    // Method is reused from AddCommandParser
     private static boolean allPrefixPresent(ArgumentMultimap argMap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(x -> argMap.getValue(x).isPresent());
     }

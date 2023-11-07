@@ -45,7 +45,7 @@ public class TaskWiseTest {
     @Test
     public void resetData_withDuplicateTasks_throwsDuplicateTaskException() {
         // Two tasks with the same identity fields
-        Task editedAlice = new TaskBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
+        Task editedAlice = new TaskBuilder(ALICE).withMembers(VALID_TAG_HUSBAND)
                 .build();
         List<Task> newTasks = Arrays.asList(ALICE, editedAlice);
         TaskWiseStub newData = new TaskWiseStub(newTasks);
@@ -72,7 +72,7 @@ public class TaskWiseTest {
     @Test
     public void hasTask_taskWithSameIdentityFieldsInTaskWise_returnsTrue() {
         addressBook.addTask(ALICE);
-        Task editedAlice = new TaskBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
+        Task editedAlice = new TaskBuilder(ALICE).withMembers(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(addressBook.hasTask(editedAlice));
     }

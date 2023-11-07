@@ -53,7 +53,9 @@ public class NoteCommand extends Command {
 
         Task taskToNote = lastShownList.get(targetIndex.getZeroBased());
 
-        Task taskWithNote = new Task(taskToNote.getDescription(), taskToNote.getStatus(), note);
+        Task taskWithNote = new Task(taskToNote.getDescription(),
+                taskToNote.getStatus(), note, taskToNote.getDeadline(), taskToNote.getPriority(),
+                taskToNote.getMembers());
         model.setTask(taskToNote, taskWithNote);
 
 

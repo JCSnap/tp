@@ -8,6 +8,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.exceptions.IllegalTaskIndexException;
+import seedu.address.logic.commands.exceptions.IllegalTaskStatusModificationException;
 import seedu.address.model.Model;
 import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
@@ -38,19 +40,19 @@ public class MarkCommand extends Command {
         List<Task> lastShownList = model.getFilteredTaskList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
+            throw new IllegalTaskIndexException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
         Task taskToMark = lastShownList.get(targetIndex.getZeroBased());
 
         Status status = taskToMark.getStatus();
         if (status.isCompleted()) {
-            throw new CommandException(MESSAGE_MARK_MARKED_TASK);
+            throw new IllegalTaskStatusModificationException(MESSAGE_MARK_MARKED_TASK);
         }
 
-        Task markedTask = new Task(taskToMark.getDescription(), status.updateStatus());
+        Task markedTask = new Task(taskToMark.getDescription(), status.updateStatus(),
+                taskToMark.getNote(), taskToMark.getDeadline(), taskToMark.getPriority(), taskToMark.getMembers());
         model.setTask(taskToMark, markedTask);
-
 
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, Messages.format(taskToMark)));
     }

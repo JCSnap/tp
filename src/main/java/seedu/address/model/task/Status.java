@@ -4,7 +4,7 @@ package seedu.address.model.task;
  * Represents the completion status of the task.
  * Guarantees: details are present and not null, immutable.
  */
-public class Status {
+public class Status implements Comparable<Status> {
     private final boolean isCompleted;
 
     /**
@@ -58,4 +58,16 @@ public class Status {
         return '[' + statusString + ']';
     }
 
+    @Override
+    public int compareTo(Status o) {
+        if (!this.isCompleted && o.isCompleted) {
+            return -1;
+        } else if (this.isCompleted == o.isCompleted) {
+            return 0;
+        } else if (this.isCompleted && !o.isCompleted) {
+            return 1;
+        }
+
+        return -1;
+    }
 }

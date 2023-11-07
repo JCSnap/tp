@@ -38,7 +38,7 @@ public class EditTaskDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false
-        editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
+        editedAmy = new EditTaskDescriptorBuilder(DESC_AMY).withMembers(VALID_TAG_HUSBAND).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 
@@ -46,8 +46,12 @@ public class EditTaskDescriptorTest {
     public void toStringMethod() {
         EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         String expected = EditTaskDescriptor.class.getCanonicalName() + "{description="
-                + editTaskDescriptor.getDescription().orElse(null) + ", tags="
-                + editTaskDescriptor.getTags().orElse(null) + "}";
+                + editTaskDescriptor.getDescription().orElse(null) + ", note="
+                + editTaskDescriptor.getNote().orElse(null) + ", tags="
+                + editTaskDescriptor.getTags().orElse(null) + ", deadline="
+                + editTaskDescriptor.getDeadline().orElse(null) + ", priority="
+                + editTaskDescriptor.getPriority().orElse(null) + ", members="
+                + editTaskDescriptor.getMembers().orElse(null) + "}";
         assertEquals(expected, editTaskDescriptor.toString());
     }
 }

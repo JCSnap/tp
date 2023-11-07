@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.task.Task;
+import seedu.address.ui.MainWindow;
 
 /**
  * The API of the Model component.
@@ -98,4 +99,16 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTaskList(Predicate<Task> predicate);
+
+    /**
+     * Returns the main window
+     * @return
+     */
+    MainWindow getMainWindow();
+
+    /**
+     * Sets the main window
+     * @param mainWindow
+     */
+    void setMainWindow(MainWindow mainWindow);
 }

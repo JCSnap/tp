@@ -1,13 +1,8 @@
 package seedu.address.logic.commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskWise;
 
 import org.junit.jupiter.api.Test;
@@ -27,7 +22,8 @@ public class NoteCommandTest {
     public void execute_validIndexAndNoteUnfilteredList_success() {
         Task taskToMark = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         Note validNote = new Note("Remember to clarify with the tutor first");
-        Task notedTask = new Task(taskToMark.getDescription(), taskToMark.getStatus(), validNote);
+        Task notedTask = new Task(taskToMark.getDescription(), taskToMark.getStatus(),
+                validNote, taskToMark.getDeadline(), taskToMark.getPriority(), taskToMark.getMembers());
 
         NoteCommand noteCommand = new NoteCommand(INDEX_FIRST_TASK, validNote);
 

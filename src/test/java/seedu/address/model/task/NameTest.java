@@ -27,8 +27,8 @@ public class NameTest {
         // invalid name
         assertFalse(Description.isValidDescription("")); // empty string
         assertFalse(Description.isValidDescription(" ")); // spaces only
-        assertFalse(Description.isValidDescription("^")); // only non-alphanumeric characters
-        assertFalse(Description.isValidDescription("peter*")); // contains non-alphanumeric characters
+        assertFalse(Description.isValidDescription("/")); // only /
+        assertFalse(Description.isValidDescription("peter//")); // description contains /
 
         // valid name
         assertTrue(Description.isValidDescription("peter jack")); // alphabets only

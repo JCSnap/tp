@@ -17,6 +17,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import static seedu.address.testutil.TypicalTasks.AMY;
 import static seedu.address.testutil.TypicalTasks.BOB;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
@@ -28,21 +29,40 @@ import seedu.address.testutil.TaskBuilder;
 public class AddCommandParserTest {
     private AddCommandParser parser = new AddCommandParser();
 
+    private AddCommand.AddTaskDescriptor desc = new AddCommand.AddTaskDescriptor();
+
+    private void setUpDesc(Task validTask) {
+        desc.setDescription(validTask.getDescription());
+        desc.setDeadline(validTask.getDeadline());
+        desc.setPriority(validTask.getPriority());
+        desc.setMembers(validTask.getMembers());
+    }
+
+    @AfterEach
+    public void reset() {
+        desc = new AddCommand.AddTaskDescriptor();
+    }
+
     @Test
     public void parse_allFieldsPresent_success() {
-        Task expectedTask = new TaskBuilder(BOB).withTags(VALID_TAG_FRIEND).build();
+        Task expectedTask = new TaskBuilder(BOB).withMembers(VALID_TAG_FRIEND).build();
+
+        setUpDesc(expectedTask);
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB
-                + TAG_DESC_FRIEND, new AddCommand(expectedTask));
+                + TAG_DESC_FRIEND, new AddCommand(desc));
 
 
         // multiple tags - all accepted
-        Task expectedTaskMultipleTags = new TaskBuilder(BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
+        Task expectedTaskMultipleTags = new TaskBuilder(BOB).withMembers(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
+
+        setUpDesc(expectedTaskMultipleTags);
+
         assertParseSuccess(parser,
                 NAME_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                new AddCommand(expectedTaskMultipleTags));
+                new AddCommand(desc));
     }
 
     @Test
@@ -75,9 +95,12 @@ public class AddCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Task expectedTask = new TaskBuilder(AMY).withTags().build();
+        Task expectedTask = new TaskBuilder(AMY).withMembers().build();
+
+        setUpDesc(expectedTask);
+
         assertParseSuccess(parser, NAME_DESC_AMY,
-                new AddCommand(expectedTask));
+                new AddCommand(desc));
     }
 
     @Test

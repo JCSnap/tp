@@ -14,13 +14,14 @@ public class Note {
     /**
      * Regular expression string for validating input strings.
      * This regular expression matches any string composed of alphanumeric characters and/or spaces,
-     * including an empty string. It ensures the input string does not start with a whitespace,
+     * also symbols except for the forward slash (/).
+     * including an empty string.
      * but allows for an empty string as a valid input.
      * <p>
-     * Example of valid inputs: "", "Hello", "Hello World", "12345"
-     * Example of invalid inputs: " Hello", "Hello!", "123!"
+     * Example of valid inputs: "", "Hello", "Hello World!", "12345."
+     * Example of invalid inputs: "Hello/"
      */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "^[^/]*$";
 
     public final String fullNote;
 

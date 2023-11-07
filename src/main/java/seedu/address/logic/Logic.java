@@ -10,6 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyTaskWise;
 import seedu.address.model.task.Task;
 import seedu.address.storage.exceptions.StorageException;
+import seedu.address.ui.MainWindow;
 
 /**
  * API of the Logic component
@@ -49,4 +50,10 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /**
+     * Set main window.
+     * @param mainWindow
+     */
+    void setMainWindow(MainWindow mainWindow);
 }
