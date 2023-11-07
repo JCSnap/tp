@@ -75,7 +75,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     public void setTaskToTaskListPanel(Task task) {
-        taskListPanel.setTaskInformation(task);
+        taskListPanel.selectAndSetTaskInformation(task);
     }
 
     private void setAccelerators() {
@@ -125,7 +125,7 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getTaskWiseFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        CommandBox commandBox = new CommandBox(this::executeCommand, taskListPanel);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 

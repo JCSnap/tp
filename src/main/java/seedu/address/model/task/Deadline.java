@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Deadline implements Comparable<Deadline> {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Deadlines need to be in the format (DD(- OR /)MM(- OR /)YYYY HH(: or -)MM) "
-                    + "OR (DD(- OR /)MM(- OR /)YYYY).";
+            "Deadlines need to be in the format [ DD(- OR /)MM(- OR /)YYYY HHMM OR HH(: OR /)MM ] "
+                    + "OR [ DD(- OR /)MM(- OR /)YYYY ].";
     public static final String INVALID_DATE = "Please input a valid date/time!";
 
     //@@author asdfghjkxd-reused
@@ -22,7 +22,7 @@ public class Deadline implements Comparable<Deadline> {
     // https://regex101.com/.
     /**
      * Regex for recognising DateTime inputs. The regex pattern below are adapted from ChatGPT,
-     * modified to better meet the requirements of Juke.
+     * modified to better meet the requirements of TaskWise.
      * <p>
      * <a href="https://regex101.com/">This</a> was used to build and test the new regex patterns.
      */
@@ -31,13 +31,13 @@ public class Deadline implements Comparable<Deadline> {
 
     /**
      * Regex for recognising Date inputs. The regex pattern below are adapted from ChatGPT,
-     * modified to better meet the requirements of Juke.
+     * modified to better meet the requirements of TaskWise.
      * <p>
      * <a href="https://regex101.com/">This</a> was used to build and test the new regex patterns.
      */
     public static final String DATE_REGEX = "^(0?[1-9]|[12][0-9]|3[01])(\\/|-)(0?[1-9]|1[0-2])(\\/|-)\\d{4}";
-
     //@@ author
+
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     private final LocalDateTime details;
@@ -73,8 +73,6 @@ public class Deadline implements Comparable<Deadline> {
     public static Deadline now() {
         return new Deadline(false, LocalDateTime.now());
     }
-
-    //@@author asdfghjkxd-reused
 
     /**
      * Checks if the input date is of the correct Date format. A Date format is specified by only the date

@@ -556,19 +556,19 @@ Our target audience of this application are Project Managers of CS2103T Group Pr
 
 ## User Stories
 
-| Priority | As a ...               | I want to ...                                                               | So that I can...                                     |
-| -------- | ---------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------- |
-|  `* * *` | user                   | be able to add tasks to my list of tasks                                    | track tasks to be done                         |
-|  `* * *` | project manager        | be able to delete tasks from my list of tasks                               | remove tasks that are completed or wrongly added     |
-|  `* * *` | project manager        | be able to view all my tasks                                                | get a high level overview of what needs to be done   |
-|  `* * *` | project manager        | be able to mark tasks that were unmarked                                    | update the progress of the task                      |
-|  `* * *` | clumsy project manager | be able to unmark tasks that were marked in case I accidentally marked them | undo my mistake                                |
-|  `* * *` | forgetful manager      | be told that I have entered an invalid command                              | be informed if the command I entered is invalid |
-|  `* *` | project manager        | be able to assign deadlines to tasks                              |  know when I need to finish the task by |
-|  `* *` | forgetful team member        | have a project manager who can track what tasks I need to do                              | be on track for deliverables |
-`* *`| busy project manager| be able to see the task's level of priority| be aware of what the team and I need to prioritise and do next|
-|`* *`|forgetful project manager|be able to add additional information relevant to my tasks|manage my tasks without missing out important details|
-| `* *`| timely project manager | be able to group my tasks by priorities, deadlines, completion status and task names | better track the tasks are that important to my project |
+| Priority | As a ...                  | I want to ...                                                                        | So that I can...                                               |
+|----------|---------------------------|--------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| `* * *`  | user                      | be able to add tasks to my list of tasks                                             | track tasks to be done                                         |
+| `* * *`  | project manager           | be able to delete tasks from my list of tasks                                        | remove tasks that are completed or wrongly added               |
+| `* * *`  | project manager           | be able to view all my tasks                                                         | get a high level overview of what needs to be done             |
+| `* * *`  | project manager           | be able to mark tasks that were unmarked                                             | update the progress of the task                                |
+| `* * *`  | clumsy project manager    | be able to unmark tasks that were marked in case I accidentally marked them          | undo my mistake                                                |
+| `* * *`  | forgetful manager         | be told that I have entered an invalid command                                       | be informed if the command I entered is invalid                |
+| `* *`    | project manager           | be able to assign deadlines to tasks                                                 | know when I need to finish the task by                         |
+| `* *`    | forgetful team member     | have a project manager who can track what tasks I need to do                         | be on track for deliverables                                   |
+| `* *`    | busy project manager      | be able to see the task's level of priority                                          | be aware of what the team and I need to prioritise and do next |
+| `* *`    | forgetful project manager | be able to add additional information relevant to my tasks                           | manage my tasks without missing out important details          |
+| `* *`    | timely project manager    | be able to group my tasks by priorities, deadlines, completion status and task names | better track the tasks are that important to my project        |
 
 
 ## Use Cases

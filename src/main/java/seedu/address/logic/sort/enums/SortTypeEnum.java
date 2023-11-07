@@ -4,7 +4,7 @@ package seedu.address.logic.sort.enums;
  * Enum to represent the field to sort by in the sort.
  */
 public enum SortTypeEnum {
-    TASK_NAME("task name"),
+    TASK_DESCRIPTION("task description"),
     STATUS("status"),
     PRIORITY("priority"),
     DEADLINE("deadline");
@@ -29,11 +29,11 @@ public enum SortTypeEnum {
 
         switch (strippedSortType) {
         case "t":
-        case "tn":
+        case "td":
         case "task":
-        case "tsk nm":
-        case "task name":
-            return SortTypeEnum.TASK_NAME;
+        case "tsk dsc":
+        case "task description":
+            return SortTypeEnum.TASK_DESCRIPTION;
         case "p":
         case "pr":
         case "pri":

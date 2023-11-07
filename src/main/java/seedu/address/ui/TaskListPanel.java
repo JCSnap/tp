@@ -76,6 +76,10 @@ public class TaskListPanel extends UiPart<Region> {
         super(FXML);
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
+
+        //@@author asdfghjkxd-reused
+        // reused from https://stackoverflow.com/questions/52184611/javafx-keep-oldvalue-and-newvalue-of-listview-the
+        // -same-when-condition-has-not-b with minor updates
         taskListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && !newValue.isSameTask(oldValue)) {
                 this.setTaskInformation(newValue);
@@ -84,14 +88,15 @@ public class TaskListPanel extends UiPart<Region> {
                 this.taskListView.getSelectionModel().select(newValue);
             }
         });
+        //@@author
 
-        //@@author asdfgjkxd-reused
-        // reused from https://copyprogramming.com/howto/implementing-a-global-key-press-for-javafx-methods
+        //@@author asdfghjkxd-reused
+        // reused from https://copyprogramming.com/howto/implementing-a-global-key-press-for-javafx-methods with
+        // minor updates
         taskListView.setOnKeyPressed(
                 x -> {
                     if (x.getCode() == KeyCode.ESCAPE) {
-                        taskListView.getSelectionModel().clearSelection();
-                        this.destroyTaskInformationView();
+                        clearSidePanel();
                     }
 
                     x.consume();
@@ -99,6 +104,14 @@ public class TaskListPanel extends UiPart<Region> {
         );
         //@@author
 
+        this.destroyTaskInformationView();
+    }
+
+    /**
+     * Clears the side panel.
+     */
+    public void clearSidePanel() {
+        this.taskListView.getSelectionModel().clearSelection();
         this.destroyTaskInformationView();
     }
 
@@ -137,6 +150,14 @@ public class TaskListPanel extends UiPart<Region> {
         this.getNoteField(task);
 
         this.taskInfoView.setFitToHeight(false);
+    }
+
+    /**
+     * Selects the task in the list view and sets the task information.
+     */
+    public void selectAndSetTaskInformation(Task task) {
+        this.taskListView.getSelectionModel().select(task);
+        this.setTaskInformation(task);
     }
 
     private void destroyTaskInformationView() {

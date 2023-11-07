@@ -70,7 +70,7 @@ public abstract class SortUtil {
      * Returns a {@code Comparator<Task>}, which compares two Tasks and returns an integer
      * indicating if the first object is less than, equal to or larger than the second object.
      * <p>
-     * This function is used to generate the comparator function for sorting by Task Name.
+     * This function is used to generate the comparator function for sorting by Task Description.
      * </p>
      *
      * @param sortOrderEnum The order to sort the task by, represented by a {@code SortOrderEnum}

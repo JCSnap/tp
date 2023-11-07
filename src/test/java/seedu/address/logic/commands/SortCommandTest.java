@@ -49,9 +49,9 @@ public class SortCommandTest {
     private static final Priority SECOND_PRIORITY = Priority.LOW;
     private static final Set<Member> DEFAULT_MEMBERS = new HashSet<>(List.of(new Member("John")));
     private static final SortCommand validTaskNameAsc = new SortCommand(SortOrderEnum.ASCENDING,
-            SortTypeEnum.TASK_NAME);
+            SortTypeEnum.TASK_DESCRIPTION);
     private static final SortCommand validTaskNameDes = new SortCommand(SortOrderEnum.DESCENDING,
-            SortTypeEnum.TASK_NAME);
+            SortTypeEnum.TASK_DESCRIPTION);
     private static final SortCommand validPriorityAsc = new SortCommand(SortOrderEnum.ASCENDING,
             SortTypeEnum.PRIORITY);
     private static final SortCommand validPriorityDes = new SortCommand(SortOrderEnum.DESCENDING,
@@ -166,7 +166,7 @@ public class SortCommandTest {
         assertTrue(validTaskNameAsc.equals(validTaskNameAsc));
 
         // same values -> returns true
-        assertTrue(validTaskNameAsc.equals(new SortCommand(SortOrderEnum.ASCENDING, SortTypeEnum.TASK_NAME)));
+        assertTrue(validTaskNameAsc.equals(new SortCommand(SortOrderEnum.ASCENDING, SortTypeEnum.TASK_DESCRIPTION)));
 
         // different types -> returns false
         assertFalse(validTaskNameAsc.equals(true));

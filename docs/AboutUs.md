@@ -30,15 +30,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: DevOps/GitHub Expert
 * Responsibilities: Implementing and maintaining DevOps tools and processes on GitHub
 
-
-=======
 ### May Thandar Hinn
 
 <img src="images/maypfv.png" width="200px">
 
-[[github](http://github.com/maypfv)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/maypfv)]
+[[portfolio](team/maypfv.md)]
 
-* Role: Deliverables & deadlines
+* Role: Deliverables & Deadlines
 * Responsibilities: Manage schedules, deliverables.
 
 ### Sean Teh
@@ -46,6 +45,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/seantehds.png" width="200px">
 
 [[github](http://github.com/seantehds)]
+[[portfolio](team/seantehds.md)]
 
 * Role: Team Lead
 * Responsibilities: Code Quality

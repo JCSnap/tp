@@ -22,6 +22,7 @@ public class ModelManager implements Model {
 
     private final TaskWise taskWise;
     private final UserPrefs userPrefs;
+
     private final FilteredList<Task> filteredTasks;
     private MainWindow mainWindow;
 

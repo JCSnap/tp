@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 public class SortTypeEnumTest {
     @Test
     public void of_validTaskName_success() {
-        assertEquals(SortTypeEnum.of("t"), SortTypeEnum.TASK_NAME);
-        assertEquals(SortTypeEnum.of("tn"), SortTypeEnum.TASK_NAME);
-        assertEquals(SortTypeEnum.of("task"), SortTypeEnum.TASK_NAME);
-        assertEquals(SortTypeEnum.of("tsk nm"), SortTypeEnum.TASK_NAME);
-        assertEquals(SortTypeEnum.of("task name"), SortTypeEnum.TASK_NAME);
+        assertEquals(SortTypeEnum.of("t"), SortTypeEnum.TASK_DESCRIPTION);
+        assertEquals(SortTypeEnum.of("td"), SortTypeEnum.TASK_DESCRIPTION);
+        assertEquals(SortTypeEnum.of("task"), SortTypeEnum.TASK_DESCRIPTION);
+        assertEquals(SortTypeEnum.of("tsk dsc"), SortTypeEnum.TASK_DESCRIPTION);
+        assertEquals(SortTypeEnum.of("task description"), SortTypeEnum.TASK_DESCRIPTION);
     }
 
     @Test
@@ -34,7 +34,7 @@ public class SortTypeEnumTest {
 
     @Test
     public void of_invalidTaskName_failure() {
-        assertThrows(IllegalArgumentException.class, () -> SortTypeEnum.of("taskname"));
+        assertThrows(IllegalArgumentException.class, () -> SortTypeEnum.of("taskdescription"));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class SortTypeEnumTest {
 
     @Test
     public void toString_taskName_success() {
-        assertEquals(SortTypeEnum.TASK_NAME.toString(), "task name");
+        assertEquals(SortTypeEnum.TASK_DESCRIPTION.toString(), "task description");
     }
 
     @Test

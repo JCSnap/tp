@@ -62,7 +62,7 @@ public class SortCommand extends Command {
         ObservableList<Task> taskList = model.getTaskWise().getTaskList();
 
         switch (sortTypeEnum) {
-        case TASK_NAME:
+        case TASK_DESCRIPTION:
             model.setAllTasks(taskList.sorted(SortUtil.ofTaskName(this.sortOrderEnum)));
             break;
         case PRIORITY:
