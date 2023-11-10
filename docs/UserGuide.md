@@ -46,7 +46,7 @@ Here's a quick summary of what TaskWise can do for you:
   - [Edit Command - Different Modes](#edit-command---different-modes)
   - [Improve Find Command To Find By Priority, Deadline, Members and Notes](#improve-find-command-to-find-by-priority-deadline-members-and-notes)
   - [Case-insensitive Sort](#case-insensitive-sort)
-  - [Case-insensitive Ordering of Members](#case---insensitive-ordering-of-members)
+  - [Case-insensitive Ordering of Members](#case-insensitive-ordering-of-members)
 - [FAQ](#faq)
   - [General Questions](#general-questions)
   - [Task-Related Questions](#task-related-questions)
@@ -181,7 +181,7 @@ By adding tasks to TaskWise, you are able to keep track of all the tasks related
 Within the window, left-click on the command box, and key in the command `add t/Complete CS2103T User Guide d/01-01-2023` into the text box, before pressing the "Enter" or "Return" key.
 
 <div markdown="span" class="alert alert-warning">
-:warning: Due to the current limitations of the features provided in TaskWise with regards to the capitalisation of Task Description, you are encouraged to be consistent with the capitalisation of your Task Descriptions of the Tasks that you create!
+:warning: Due to the current limitations of the features provided in TaskWise in regard to the capitalisation of Task Description, you are encouraged to be consistent with the capitalisation of your Task Descriptions of the Tasks that you create!
 </div>
 
 ![image](images/user_guide/Tutorial_Before.png)
@@ -318,7 +318,7 @@ to view a **popup window** with a link to our user guide in it!
 The `help` command does not require any parameters; simply type in the `help` command and get all your questions answered!
 
 <div markdown="span" class="alert alert-info">
-:information_source: If you accidentally, or intentionally, enter in any number of parameters with the `help` command, they will be ignored and the command will work as usual!
+:information_source: If you accidentally, or intentionally, enter any number of parameters with the `help` command, they will be ignored and the command will work as usual!
 </div>
 
 [[Jump to Features]](#features)
@@ -357,9 +357,9 @@ This is all you really need to add a task! It is the description of your task th
 ANY character is allowed, except for blanks and `/`.
 
 <div markdown="span" class="alert alert-warning">
-:warning: Due to the current limitations of the features provided in TaskWise with regards to the capitalisation of Task Description, you are encouraged to be consistent with the capitalisation of your Task Descriptions of the Tasks that you create!
+:warning: Due to the current limitations of the features provided in TaskWise in regard to the capitalisation of Task Description, you are encouraged to be consistent with the capitalisation of your Task Descriptions of the Tasks that you create!
 <br/><br/>
-Refer to [this](#case---insensitive-sort) section for more information on this issue! Rest assured that we are working hard to improve your user experience and we appreciate your patience on this issue while we work on an appropriate fix for this issue!
+Refer to [this](#case---insensitive-sort) section for more information on this issue! Rest assured that we are working hard to improve your user experience, and we appreciate your patience on this issue while we work on an appropriate fix for this issue!
 </div>
 
 **DEADLINE**
@@ -420,11 +420,11 @@ Head over to the [Task-Related Questions](#task-related-questions) section to fi
 
 ### Limitations
 
-Currently, TaskWise allows us to only add tasks that are of different names, whether or not parameters such as deadline, priority, status or member are different. We acknowledge that there may be some inconvenience faced and would love to help you workaround this limitation!
+Currently, TaskWise allows us to only add tasks that are of different names whether parameters such as deadline, priority, status or member are different. We acknowledge that there may be some inconvenience faced and would love to help you workaround this limitation!
 
 **Numbering**
 
-If you have tasks that you wish to add with the same description `CS2103T Meeting`, consider numbering them. For example, `CS2103T Meeting 1`, `CS2103T Meeting 2`, `CS2103T Meeting 3` etc. With the numbering, the task descriptions will each be unique and you can have different deadlines, priority levels, status and members attributed to them!
+If you have tasks that you wish to add with the same description `CS2103T Meeting`, consider numbering them. For example, `CS2103T Meeting 1`, `CS2103T Meeting 2`, `CS2103T Meeting 3` etc. With the numbering, the task descriptions will each be unique, and you can have different deadlines, priority levels, status and members attributed to them!
 
 **Deletion**
 
@@ -586,9 +586,9 @@ This is the description of the task that you want to keep track of. You may wish
 ANY character is allowed, except for blanks and `/`.
 
 <div markdown="span" class="alert alert-warning">
-:warning: Due to the current limitations of the features provided in TaskWise with regards to the capitalisation of Task Description, you are encouraged to be consistent with the capitalisation of your Task Descriptions of the Tasks that you create!
+:warning: Due to the current limitations of the features provided in TaskWise in regard to the capitalisation of Task Description, you are encouraged to be consistent with the capitalisation of your Task Descriptions of the Tasks that you create!
 <br/><br/>
-Refer to [this](#case---insensitive-sort) section for more information on this issue! Rest assured that we are working hard to improve your user experience and we appreciate your patience on this issue while we work on an appropriate fix for this issue!
+Refer to [this](#case---insensitive-sort) section for more information on this issue! Rest assured that we are working hard to improve your user experience, and we appreciate your patience on this issue while we work on an appropriate fix for this issue!
 </div>
 
 **DEADLINE**
@@ -752,7 +752,7 @@ This feature has no parameters involved! Simply type the `list` command. It is c
 |                            `list`                             |
 
 <div markdown="span" class="alert alert-info">
-:information_source: If you accidentally, or intentionally, enter in any number of parameters with the `list` command, they will be ignored and the command will work as usual!
+:information_source: If you accidentally, or intentionally, enter any number of parameters with the `list` command, they will be ignored and the command will work as usual!
 </div>
 
 **Example**
@@ -887,7 +887,7 @@ rather than:
 
 which is probably what you expect the command to do!
 
-This is also true if the sort was done in a descending order!
+This is also true if the sort was done in descending order!
 
 We aim to remedy this behaviour in an upcoming release of TaskWise, whereby this unexpected behaviour will be fixed!
 
@@ -962,7 +962,7 @@ Enter in the `clear` command in the command box to clear out your task list and 
 This feature has no parameters involved! Simply type the `clear` command. It is case-sensitive (i.e. `Clear` and `CLEAR` will not be recognised as valid commands!).
 
 <div markdown="span" class="alert alert-info">
-:information_source: If you accidentally, or intentionally, enter in any number of parameters with the `clear` command, they will be ignored and the command will work as usual!
+:information_source: If you accidentally, or intentionally, enter any number of parameters with the `clear` command, they will be ignored and the command will work as usual!
 </div>
 
 **Example**
@@ -1010,7 +1010,7 @@ For example, if you have marked the task`CS2103T Meeting` with no deadline, prio
 
 Currently, when a user inputs a date that has already passed as a deadline for a task, TaskWise carries out the command as usual and treats the command like any other.
 
-In the future, we intend for the user to continue to be able to use dates that have already passed as valid deadlines for their tasks, as we still wish for users to be able to add/edit tasks that have deadlines that have passed already. However, when doing so, TaskWise would prompt you and ask for confirmation as to whether you wish to continue adding/editing a deadline that has passed already. The task will only be created/edited should you confirm their decision to use a past date.
+In the future, we intend for the user to continue to be able to use dates that have already passed as valid deadlines for their tasks, as we still wish for users to be able to add/edit tasks that have deadlines that have passed already. However, when doing so, TaskWise would prompt you and ask for confirmation whether you wish to continue adding/editing a deadline that has passed already. The task will only be created/edited should you confirm their decision to use a past date.
 
 Also, tasks with deadlines that are in the past and are incomplete will be indicated with a red highlight, to signify that they are overdue, helping you keep track of overdue tasks that need to be completed as soon as possible!
 
@@ -1070,7 +1070,7 @@ In a future release of this application, we will amend this unexpected behaviour
 
 ## Case-insensitive Ordering of Members
 
-Currently, members added to a Task appear on the Task Card as well as the Side Panel in ascending order according to the member's name, using the same sorting process detailed above in [Case-insensitive Sort](#case---insensitive-sort)!
+Currently, members added to a Task appear on the Task Card as well as the Side Panel in ascending order according to the member's name, using the same sorting process detailed above in [Case-insensitive Sort](#case-insensitive-sort)!
 
 While there are no known workarounds for this issue, we recommend that you remain consistent in your capitalisation of the names of the members to avoid this unexpected behaviour showing up while you are using TaskWise!
 
@@ -1078,7 +1078,7 @@ We also recognise that this may be inconvenient for you, as you cannot define yo
 
 # FAQ
 
-Have some burning questions which you need answered? Here are the answers to some of the common questions that you may have!
+Have some burning questions which you need answered? Here are the answers to some common questions that you may have!
 
 ## General Questions
 

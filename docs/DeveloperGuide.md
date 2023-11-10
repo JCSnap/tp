@@ -45,15 +45,15 @@ Welcome to the TaskWise Developer Guide!
     - [Non-Functional Requirements](#non-functional-requirements)
     - [Glossary](#glossary)
 - [Appendix: Planned Enhancements](#appendix-planned-enhancements)
-    - [Adding Tasks With Same Description and Different Other Parameters](#adding-tasks-with-same-description-and-different-other-parameters)
+    - [Adding Tasks With the Same Description and Different Other Parameters](#adding-tasks-with-the-same-description-and-different-other-parameters)
     - [Better Clarity Regarding Deadlines That Have Passed](#better-clarity-regarding-deadlines-that-have-passed)
     - [Different Modes of Edit Command](#different-modes-of-edit-command)
         - [Append Mode](#append-mode)
         - [Edit Mode](#edit-mode)
         - [Overwrite Mode](#overwrite-mode)
     - [Improve Find Command To Find By Priority, Deadline, Members and Notes](#improve-find-command-to-find-by-priority-deadline-members-and-notes)
-    - [Case-insensitive Sort](#case---insensitive-sort)
-    - [Case-insensitive Ordering of Members](#case---insensitive-ordering-of-members)
+    - [Case-insensitive Sort](#case-insensitive-sort)
+    - [Case-insensitive Ordering of Members](#case-insensitive-ordering-of-members)
 - [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
 - [Appendix: Effort](#appendix-effort)
 
@@ -88,7 +88,7 @@ Before you begin your development journey in TaskWise, make sure that you meet t
 
 ## Minimum Requirements
 
-TaskWise uses Java 11 with JavaFX. If you are not sure how to install Java 11 and JavaFX, refer to [this guide](#UserGuide.html#installation-guide) in the User Guide to install and start TaskWise.
+TaskWise uses Java 11 with JavaFX. If you are not sure how to install Java 11 and JavaFX, refer to [this guide](./UserGuide.md#installation-guide) in the User Guide to install and start TaskWise.
 
 <div markdown="span" class="alert alert-warning">
 :warning: This step is crucial to ensure that the features you develop will work well with other components in TaskWise!
@@ -142,7 +142,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point).
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside components' being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -223,9 +223,9 @@ Included inside the Task model are the following attributes:
 * `Members`
     * A set of member instances, each encapsulating the name of the respective members assigned to the task.
 * `Priority`
-    * Encapsulates levels of priority as enumerations, highlighting the importance or urgency of the task it is associated with.
+    * Encapsulate levels of priority as enumerations, highlighting the importance or urgency of the task it is associated with.
 
-The attributes status, description and deadline are immutable classes.
+The attribute status, description and deadline are immutable classes.
 Being immutable allows us to be consistent across editing a specific task and updating the status of the task through the mark/unmark commands. It also helps us to improve the clarity of whether a task is completed or incomplete.
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
@@ -239,7 +239,7 @@ Being immutable allows us to be consistent across editing a specific task and up
 The `Storage` component,
 * can save both TaskWise data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `TaskWiseStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`.
+* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`).
 
 ### Common Classes
 
@@ -584,12 +584,13 @@ The process is given as such:
 6. The `NoteCommand` object is then returned back to `LogicManager`, which invokes the `execute()` method of the `NoteCommand` object.
     1. Then, `NoteCommand` invokes the `setTask()` method on `Model`, which in turn invokes the `setTask()` method on `TaskWise`, replacing the old Task with a new instance of the Task with the Note.
     2. A new `CommandResult` object detailing the success of the `note` command is then created and returned to the caller of the `NoteCommand::execute()` method.
-7. `LogicManager` receives the `CommandResult` object. returned from the execution of the `NoteCommand` and parses it.
+7. `LogicManager` receives the `CommandResult` object returned from the execution of the `NoteCommand` and parses it.
 8. The execution of `NoteCommand` terminates.
 
 ### Alternatives Considered
 
 Initially, we were considering whether to make the requirement for `Note` as stringent as `Description`, where we disallow empty string. However, we realized that there is a key difference between `Note` and `Description` that makes `Note` less "strict" than `Description`, which is that a `Description` can never be empty while a `Note` can be empty. Thus, we have decided to proceed with the less strict requirement for `Note`.
+
 
 Here is the activity diagram from when a user inputs a note command:
 
@@ -611,11 +612,11 @@ Given below is the sequence diagram detailing the overall process of executing a
 6. The `ViewCommand` object is then returned back to `LogicManager`, which invokes the `execute()` method of the `ViewCommand` object.
     1. Then, `ViewCommand` invokes the `getFilteredTaskList()` method on `Model` to get the task specified by the index.
     2. The `ViewCommand` then invokes the `setTaskToTaskListPanel` method of the main window, passing in the task.
-7. `LogicManager` receives the `CommandResult` object. returned from the execution of the `ViewCommand` and parses it.
+7. `LogicManager` receives the `CommandResult` object returned from the execution of the `ViewCommand` and parses it.
 8. The execution of `ViewCommand` terminates.
 
 ### Alternatives Considered
-We initially thought of using the observer pattern to update the UI when the task in focus changes. However, we realized that that would require a large refactoring and thus we deem it not worth pursuing.
+We initially thought of using the observer pattern to update the UI when the task in focus changes. However, we realized that that would require a large refactoring and thus, we deem it not worth pursuing.
 
 Here is the activity diagram from when a user inputs a view command:
 
@@ -658,7 +659,7 @@ The process is given as such:
 4. The `ListCommand` object is then returned back to `LogicManager`, which invokes the `execute()` method of the `ListCommand` object.
     1. Then, `ListCommand` invokes the `updateFilteredTaskList()` method on `Model`, which in turn invokes the `setPredicate()` method on `filteredTasks`, updating the `FilteredTaskList` within the `Model`.
     2. A new `CommandResult` object detailing the success of the `list` command is then created and returned to the caller of the `ListCommand::execute()` method.
-5. `LogicManager` receives the `CommandResult` object. returned from the execution of the `ListCommand` and parses it.
+5. `LogicManager` receives the `CommandResult` object returned from the execution of the `ListCommand` and parses it.
 6. The execution of `ListCommand` terminates.
 
 # Delete Feature
@@ -681,7 +682,7 @@ The process is given as such:
     2. The `targetIndex` to delete will be verified to ensure that it is valid, otherwise, an exception will be thrown to inform the user that the index is invalid.
     3. Then, the `deleteTask()` method will be invoked on `Model` which in turn invokes the `removeTask()` method on `TaskWise`.
     4. A new `CommandResult` object detailing the success of the `delete` command is then created and returned to the caller of the `DeleteCommand::execute()` method.
-7. `LogicManager` receives the `CommandResult` object. returned from the execution of the `DeleteCommand` and parses it.
+7. `LogicManager` receives the `CommandResult` object returned from the execution of the `DeleteCommand` and parses it.
 8. The execution of `DeleteCommand` terminates.
 
 # Clear Feature
@@ -701,7 +702,7 @@ The process is given as such:
 6. The `ClearCommand` object is then returned back to `LogicManager`, which invokes the `execute()` method of the `ClearCommand` object.
     1. Then, `ClearCommand` invokes the `setTaskWise()` method on `Model`, which will in turn call the `resetData()` method on`TaskWise` with a `new TaskWise()` instance.
     2. A new `CommandResult` object detailing the success of the `clear` command is then created and returned to the caller of the `ClearCommand::execute()` method.
-7. `LogicManager` receives the `CommandResult` object. returned from the execution of the `ClearCommand` and parses it.
+7. `LogicManager` receives the `CommandResult` object returned from the execution of the `ClearCommand` and parses it.
 8. The execution of `ClearCommand` terminates.
 
 # Documentation, Logging, Testing, Configuration and DevOps
@@ -755,16 +756,16 @@ Guarantees:
 **MSS**
 
 1. User inputs a command to add a task.
-2. System adds the task into a list of task and <u>[displays the updated task list (UC03)](#UC03-View-all-tasks)</u>.
+2. System adds the task into a list of task and [displays the updated task list (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -777,16 +778,16 @@ Guarantees:
 **MSS**
 
 1. User inputs a command to delete a certain task.
-2. System deletes the task and <u>[displays the updated task list (UC03)](#UC03-View-all-tasks)</u>.
+2. System deletes the task and [displays the updated task list (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -804,7 +805,7 @@ Use case ends.
 
 **Extensions:**
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.
 
 Use case ends.
@@ -819,16 +820,16 @@ Guarantees:
 
 1. User inputs a command to mark a certain task as done.
 2. System updates and marks the task as done.
-3. Updated list of tasks is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of tasks is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -842,16 +843,16 @@ Guarantees:
 **MSS**
 1. User inputs a command to unmark certain task.
 2. System updates and marks the task as incomplete.
-3. Updated list of tasks is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of tasks is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -891,17 +892,17 @@ Guarantees:
 
 1. User inputs edit command to edit the deadline of an existing task.
 2. System updates and adds the deadline to the specified task.
-3. Updated list of tasks is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of tasks is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -915,17 +916,17 @@ Guarantees:
 
 1. User inputs edit command to assign member(s) to an existing task.
 2. System assigns members to the existing task.
-3. Updated list of tasks is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of tasks is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -939,17 +940,17 @@ Guarantees:
 
 1. User inputs the edit command to update the priority of an existing task.
 2. System updates the priority level of the specified task.
-3. Updated list of tasks is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of tasks is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -963,17 +964,17 @@ Guarantees:
 
 1. User inputs a command to add note to an existing task.
 2. System updates the task to include the note.
-3. Updated list of task with note is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of task with note is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -989,17 +990,17 @@ Guarantees:
 
 1. User inputs command to sort the task list.
 2. System parses the command and sorts the task list.
-3. Updated task list is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>
+3. Updated task list is [displayed to the user (UC03)](#uc03-view-all-tasks)
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -1014,14 +1015,14 @@ Guarantees:
 
 1. User inputs a command to clear the task list.
 2. System parses the command and clears all tasks from task list.
-3. Updated empty task list is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>
+3. Updated empty task list is [displayed to the user (UC03)](#uc03-view-all-tasks)
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.
 
 Use case ends.
@@ -1043,7 +1044,7 @@ Use case ends.
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.
 
 Use case ends.
@@ -1064,7 +1065,7 @@ Use case ends.
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.
 
 Use case ends.
@@ -1078,17 +1079,17 @@ Guarantees:
 
 1. User inputs a command to edit a task.
 2. System updates the description of the task.
-3. Updated list of task is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of task is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -1102,17 +1103,17 @@ Guarantees:
 
 1. User inputs the command to edit a task.
 2. System updates the note of the task.
-3. Updated list of task is <u>[displayed to the user (UC03)](#UC03-View-all-tasks)</u>.
+3. Updated list of task is [displayed to the user (UC03)](#uc03-view-all-tasks).
 
 Use case ends.
 
 **Extensions:**
 
 1a. User enters an invalid command.  
-&ensp;&ensp;1a1. System warns that the <u>[command is invalid (UC06)](#UC06-Warn-on-Invalid-Command)</u>.  
+&ensp;&ensp;1a1. System warns that the [command is invalid (UC06)](#uc06-warn-on-invalid-command).  
 &ensp;&ensp;1a2. User acknowledges the warning.  
 1b. User enters an illegal command.  
-&ensp;&ensp;1b1. System warns that the <u>[command is illegal (UC07)](#UC07-Warn-on-Illegal-Command)</u>.  
+&ensp;&ensp;1b1. System warns that the [command is illegal (UC07)](#uc07-warn-on-illegal-command).  
 &ensp;&ensp;1b2. User acknowledges the warning.
 
 Use case ends.
@@ -1121,8 +1122,8 @@ Use case ends.
 
 ## Non-Functional Requirements
 
-1. TaskWise should work on Windows/MacOS/Linux as long as the device has `Java 11` or above installed.
-2. A user should be able to accomplish all of the tasks using commands rather than using a mouse.
+1. TaskWise should work on Windows/macOS/Linux as long as the device has `Java 11` or above installed.
+2. A user should be able to accomplish all the tasks using commands rather than using a mouse.
 3. The size of the JAR file should not be larger than 100 MB.
 4. TaskWise should work without Internet connectivity.
 
@@ -1163,7 +1164,7 @@ Currently, when a user inputs a date as a deadline for a task, there are no chec
 
 However, it may be viewed by some users as unintentional, as they question why we would allow users to enter past dates, and believe that it is due to a lack of validation.
 
-In future iterations of TaskWise, we plan to check the inputs given by users and see if they are using a date that has already passed. Users will still be allowed to proceed with adding the task with a deadline that has already passed but will be prompted by TaskWise as to whether they wish to proceed even with the addition of a past date to their deadline. If a mistake was made by the user, then by rejecting the prompt given to them, they would be able to reverse the state of TaskWise back to its original state.
+In future iterations of TaskWise, we plan to check the inputs given by users and see if they are using a date that has already passed. Users will still be allowed to proceed with adding the task with a deadline that has already passed but will be prompted by TaskWise whether they wish to proceed even with the addition of a past date to their deadline. If a mistake was made by the user, then by rejecting the prompt given to them, they would be able to reverse the state of TaskWise back to its original state.
 
 Should the users proceed with adding the task with the specified deadline, they will be informed by TaskWise that a deadline has passed and that they have overdue tasks. These tasks will also be placed higher among the other tasks when TaskWise is booted up as well as whenever the list is sorted, to signify that they are of higher priority to be completed than other non-overdue tasks.
 
@@ -1240,7 +1241,7 @@ However, in a future iteration of TaskWise, we will replace `String::compareTo` 
 
 ## Case-insensitive Ordering of Members
 
-When members are added to any Tasks, they are first sorted by the member's names. This process uses the same case-sensitive comparison method as detailed in [Case-insensitive Sort](#case---insensitive-sort), which results in the same problems as described in the linked issue.
+When members are added to any Tasks, they are first sorted by the member's names. This process uses the same case-sensitive comparison method as detailed in [Case-insensitive Sort](#case-insensitive-sort), which results in the same problems as described in the linked issue.
 
 For example, adding the members:
 
@@ -1269,7 +1270,6 @@ Given below are instructions to test the app manually.
 1. Initial launch
     1. Download the jar file and copy it into an empty folder.
     2. Double-click the jar file. Taskwise should appear with the following UI.
-
 ![Screenshot of TaskWise UI](images/user_guide/GUI_Interface.png)
 
 2. Saving window preferences
@@ -1298,7 +1298,7 @@ Given below are instructions to test the app manually.
     1.  Try adding a note to task 1 with `note 1 n/additional information`.
     2.  The note should be updated on the UI.
 
-4. Edting a task
+4. Editing a task
     1. Try editing a task with `edit 1 t/Meeting d/05-11-2023 2200 m/john p/low`.
     2. The task should be updated with the appropriate changes on the UI.
     3. Try editing with a different date format that is not supported and check that the error message is appropriate.
@@ -1321,7 +1321,7 @@ Given below are instructions to test the app manually.
 8. Sort tasks
     1. Try to sort the tasks using `sort o/a ty/t`.
     2. The tasks should be sorted in ascending order by status.
-    3. You can permutate the sort orders `a` and `d`, and sort types `t`, `s`, `d`, `p` and make sure that the expected result is displayed for each of them. Here are some possible permulations:
+    3. You can permute the sort orders `a` and `d`, and sort types `t`, `s`, `d`, `p` and make sure that the expected result is displayed for each of them. Here are some possible permutations:
         - `sort o/d ty/s`: Sort from incomplete to complete.
         - `sort o/d ty/p`: Sort from high to low priority.
         - `sort o/a ty/d`: Sort from earliest to latest deadline.
@@ -1348,11 +1348,11 @@ One of the biggest challenges we encountered was understanding the underlying im
 
 Another big challenge we encountered was refactoring code that was pre-existing in the codebase. Due to the multiple layers of nesting of code, we encountered difficulties refactoring code, and renaming classes and methods, even with the help of IntelliJ IDEA IDE's smart refactoring feature, as some classes or methods cannot be detected properly and ended up not being refactored, resulting in broken code which took us days to fix and test.
 
-We also faced some difficulties with learning to work together as a team using a Version Control System (Github) as there were numerous merge conflicts that overwrote some of the code that we already implemented. The main difficulty came at the end of V1.2 when we had to merge all our separate assigned features into the team repository master branch.
+We also faced some difficulties with learning to work together as a team using a Version Control System (GitHub) as there were numerous merge conflicts that overwrote some of the code that we already implemented. The main difficulty came at the end of V1.2 when we had to merge all our separate assigned features into the team repository master branch.
 
 ## Effort Required
 
-Indeed, multiple guidances are set in place to help us kickstart the brownfield project and understand how we can start working with the initial codebase. This significantly reduces the time that we require to be familiar with the codebase. Yet, the effort that was required for us to refactor the codebase at the start was an insurmountable one to say, but we did it.
+Indeed, multiple guidance are set in place to help us kickstart the brownfield project and understand how we can start working with the initial codebase. This significantly reduces the time that we require to be familiar with the codebase. Yet, the effort that was required for us to refactor the codebase at the start was an insurmountable one to say, but we did it.
 
 ## Achievements
 
