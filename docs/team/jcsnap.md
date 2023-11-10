@@ -12,7 +12,8 @@ Given below are my contributions to the project.
     * What it does: Adds a note to a task.
     * Justifications: There might be additional information that the user wants to add to a task, but is too long to be included in the description.
     * Highlights: It can be edited in the edit command as well.
-    * Credits: NIL
+    * Credits: The validation REGEX to check for validity of `note`'s input by user was reused from ChatGPT's
+      generated code.
 * New Feature: View
     * What it does: Displays the complete imformation of the task in the side panel.
     * Justifications: It is useful for the user to see the complete information of the task. It is a cli implementation of "clicking" the task.
